@@ -3,7 +3,9 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - build2
+      - build2:
+          reqires:
+            - build
 
 
 version: 2
