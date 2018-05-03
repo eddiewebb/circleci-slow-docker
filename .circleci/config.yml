@@ -13,10 +13,8 @@ jobs:
       - image: circleci/python:2-jessie
     steps:
       - checkout
-
       - setup_remote_docker:   # (2)
           docker_layer_caching: true # (3)
-
       - run:
           name: Sleep!
           command: |
@@ -26,11 +24,9 @@ jobs:
       - image: circleci/python:2-jessie
     steps:
       - checkout
-
       - setup_remote_docker:   # (2)
           docker_layer_caching: true # (3)
-
       - run:
           name: Sleep!
-                      command: |
-                        sleep 120
+          command: |
+            sleep 120
