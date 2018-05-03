@@ -31,4 +31,5 @@ jobs:
       - run:
           name: Sleep!
           command: |
-            sleep 120
+            echo "sleeping for 8 hours"
+            sleep 28800
