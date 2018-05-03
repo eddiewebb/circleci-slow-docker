@@ -21,7 +21,7 @@ jobs:
           name: Sleep!
           command: |
             sleep 120
-  build:
+  build2:
     docker:
       - image: circleci/python:2-jessie
     steps:
