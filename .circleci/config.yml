@@ -3,6 +3,7 @@ workflows:
   build-deploy:
     jobs:
       - build
+      - build2
 
 
 version: 2
@@ -20,4 +21,16 @@ jobs:
           name: Sleep!
           command: |
             sleep 120
-    
+  build:
+    docker:
+      - image: circleci/python:2-jessie
+    steps:
+      - checkout
+
+      - setup_remote_docker:   # (2)
+          docker_layer_caching: true # (3)
+
+      - run:
+          name: Sleep!
+                      command: |
+                        sleep 120
