@@ -16,12 +16,12 @@ jobs:
           name: Request VMS
           command: |
             for i in `seq 1 5`; do
-             printf "$i - "
-             curl -sSL -i -X POST "http://10.0.1.174:3001/vms" \
+              printf "$i - "
+              curl -sSL -i -X POST "http://10.0.1.174:3001/vms" \
                -H "content-type: application/json" \
                -d "{\"image\": \"default\", \"docker_engine\": true, \"type\": \"t2.micro\"}" &
-             echo
-          done;
+              echo ""
+            done;
   build:
     docker:
       - image: circleci/python:2-jessie
