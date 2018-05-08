@@ -5,7 +5,7 @@ workflows:
       - request
       - build:
           requires:
-            - build
+            - request
 version: 2
 jobs:
   request:
