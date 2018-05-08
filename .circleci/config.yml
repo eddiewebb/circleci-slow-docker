@@ -2,9 +2,26 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
+      - request
+      - build:
+          requires:
+            - build
 version: 2
 jobs:
+  request:
+    docker:
+      - image: circleci/python:2-jessie
+    steps:
+      - run:
+          name: Request VMS
+          command: |
+            for i in `seq 1 5`; do
+             printf "$i - "
+             curl -sSL -i -X POST "http://10.0.1.174:3001/vms" \
+               -H "content-type: application/json" \
+               -d "{\"image\": \"default\", \"docker_engine\": true, \"type\": \"t2.micro\"}" &
+             echo
+          done;
   build:
     docker:
       - image: circleci/python:2-jessie
